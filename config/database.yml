@@ -9,12 +9,15 @@ default: &default
   pool: 5
   timeout: 5000
 
+
 development:
   <<: *default
   adapter: postgresql
   database: blog_development
   pool: 5
   timeout: 5000
+  username: blog
+  password: 126ac9f6149081eb0e97c2e939eaad52
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,6 +28,8 @@ test:
   database: blog_test
   pool: 5
   timeout: 5000
+  username: blog
+  password: 126ac9f6149081eb0e97c2e939eaad52
 
 production:
   <<: *default
@@ -32,3 +37,5 @@ production:
   database: blog_production
   pool: 5
   timeout: 5000
+  username: blog
+  password: 126ac9f6149081eb0e97c2e939eaad52
