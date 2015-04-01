@@ -1,0 +1,44 @@
+<%= render "header" %>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="page-header">
+                Welcome
+                <small>Simple Blog</small>
+            </h1>
+
+            <!-- First Blog Post -->
+            <% @articles.each do |article| %>
+            <h2>
+                <%= link_to article.title, article %>
+            </h2>
+            <p class="lead">
+                by <a href="index.php"><%= article.user.email %></a>
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span> Posted on <%= article.created_at %></p>
+            <hr>
+            <p><%= article.content %></p>
+            <a class="btn btn-primary" href="articles/<%= article.id %>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+            <hr>
+            <% end %>
+
+            <!-- Pager -->
+            <%= paginate @articles %>
+
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+        <%= render "footer" %>
+
+</div>
+<!-- /.container -->

@@ -1,0 +1,15 @@
+<%= render "header" %>
+
+<div class="container">
+    <div class="row">
+        <h1>編輯文章</h1>
+        <div class="col-lg-6">
+            <div class="well">
+            <%= render 'form' %>
+            </div>
+            <%= link_to '取消', @article %>
+        </div>
+    </div>
+    <hr>
+    <%= render "footer" %>
+</div>
