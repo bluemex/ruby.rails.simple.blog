@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-    before_action :set_comments, :only => [ :list, :update, :destory]
+    before_action :set_comments, :only => [ :list, :update]
 
     def list
 

@@ -1,7 +1,7 @@
 class ArticlesController < InheritedResources::Base
 
     before_action :authenticate_user!, except: [ :index, :show]
-    before_action :set_article, :only => [ :show, :edit, :update, :destory]
+    before_action :set_article, :only => [ :show, :edit, :update, :destroy]
 
     def index
         @articles = Article.includes(:user).order("updated_at desc").page(params[:page]).per(5)
