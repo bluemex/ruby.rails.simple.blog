@@ -20,7 +20,6 @@ class ArticlesController < InheritedResources::Base
     end
 
     def show
-        @user = @article.user
     end
 
     def edit

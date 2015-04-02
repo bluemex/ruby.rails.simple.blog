@@ -16,7 +16,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <%= @user.email %>
+                    by <%= @article.user.email %>
                     <% if current_user && @article.user_id == current_user.id %>
                         <%= link_to '編輯', edit_article_path(@article), class: "btn btn-link" %>
                         <%= link_to "刪除", article_path(@article), class: "btn btn-danger", :method => :delete, data: {confirm: "確定要刪除文章?"} %>

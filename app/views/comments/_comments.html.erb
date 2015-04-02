@@ -1,4 +1,5 @@
 <% @article.comments.each do |comment| %>
+<% if comment.id %>
 <!-- Comment -->
 <div class="media">
     <div class="media-body">
@@ -11,4 +12,5 @@
         <%= comment.comment %>
     </div>
 </div>
+<% end %>
 <% end %>
