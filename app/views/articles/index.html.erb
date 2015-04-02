@@ -21,11 +21,16 @@
             <p class="lead">
                 by <a href="index.php"><%= article.user.email %></a>
             </p>
-            <p><span class="glyphicon glyphicon-time"></span> Posted on <%= article.created_at %></p>
+            <p>
+                <span class="glyphicon glyphicon-time"></span> Posted on <%= article.created_at %>
+                <% if current_user && article.user_id == current_user.id %>
+                    <%= link_to "編輯", edit_article_path(article), class: "btn btn-link"%>
+                    <%= link_to "刪除", article_path(article), class: "btn btn-danger", :method => :delete, data: {confirm: "確定要刪除文章?"} %>
+                <% end %>
+            </p>
             <hr>
-            <p><%= article.content %></p>
+            <p><%= truncate(article.content, length: 30) %></p>
             <a class="btn btn-primary" href="articles/<%= article.id %>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-
             <hr>
             <% end %>
 

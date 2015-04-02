@@ -1,0 +1,19 @@
+<%= form_for [@article, @article.comments.build], html: { class: "form-horizontal"} do |f| %>
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">暱稱</label>
+        <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control", placeholder: "neme" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="comment" class="col-sm-2 control-label">評論</label>
+        <div class="col-sm-10">
+        <%= f.text_area :comment, rows: "3", class: "form-control" ,placeholder: "comment..."%>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit "評論", class: "pull-right btn btn-primary" %>
+        </div>
+    </div>
+<% end %>

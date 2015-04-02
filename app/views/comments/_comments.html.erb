@@ -1,0 +1,14 @@
+<% @article.comments.each do |comment| %>
+<!-- Comment -->
+<div class="media">
+    <div class="media-body">
+        <h4 class="media-heading"><%= comment.name %>
+            <small><%= comment.created_at %></small>
+            <% if current_user && @article.user_id == current_user.id %>
+            <%= link_to "刪除", [comment.article, comment], class: "btn btn-danger", :method => :delete, data: {confirm: "確定要刪除評論?"} %>
+            <% end %>
+        </h4>
+        <%= comment.comment %>
+    </div>
+</div>
+<% end %>
