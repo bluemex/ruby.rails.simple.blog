@@ -14,12 +14,15 @@ class ArticlesController < InheritedResources::Base
     def create
         @article = Article.new(article_params)
         @article.user_id = current_user.id
-        @article.save
-
-        redirect_to :action => :index
+        if @article.save
+            redirect_to :action => :index
+        else
+            render :action => :new
+        end
     end
 
     def show
+        @comment = Comment.new
     end
 
     def edit
@@ -27,9 +30,11 @@ class ArticlesController < InheritedResources::Base
     end
 
     def update
-        @article.update(article_params)
-
-        redirect_to :action => :show, :id => @article
+        if @article.update(article_params)
+            redirect_to :action => :show, :id => @article
+        else
+            render show_article_path(@article);
+        end
     end
 
     def destroy
