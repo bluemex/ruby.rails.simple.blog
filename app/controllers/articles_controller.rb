@@ -1,7 +1,8 @@
 class ArticlesController < InheritedResources::Base
 
     before_action :authenticate_user!, except: [ :index, :show]
-    before_action :set_article, :only => [ :show, :edit, :update, :destroy]
+    before_action :set_article, :only => [ :show]
+    before_action :set_current_user_article, :only => [ :edit, :update, :destroy]
 
     def index
         @articles = Article.includes(:user).order("updated_at desc").page(params[:page]).per(5)
@@ -12,8 +13,7 @@ class ArticlesController < InheritedResources::Base
     end
 
     def create
-        @article = Article.new(article_params)
-        @article.user_id = current_user.id
+        @article = current_user.articles.new(article_params)
         if @article.save
             redirect_to :action => :index
         else
@@ -51,6 +51,10 @@ class ArticlesController < InheritedResources::Base
 
     def set_article
         @article = Article.find(params[:id])
+    end
+
+    def set_current_user_article
+        @article = current_user.articles.find(params[:id])
     end
 end
 

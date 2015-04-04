@@ -22,7 +22,7 @@
                 by <%= article.user.email %>
             </p>
             <p>
-                <span class="glyphicon glyphicon-time"></span> Posted on <%= article.created_at %>
+                <span class="glyphicon glyphicon-time"></span> Posted on <%= article.created_at.to_s(:long) %>
                 <% if current_user && article.user_id == current_user.id %>
                     <%= link_to "編輯", edit_article_path(article), class: "btn btn-link"%>
                     <%= link_to "刪除", article_path(article), class: "btn btn-danger", :method => :delete, data: {confirm: "確定要刪除文章?"} %>
